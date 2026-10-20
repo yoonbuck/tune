@@ -1,4 +1,5 @@
 import { PitchSmoother, detectPitch } from "@tune/pitch-detection";
+import { afterMicStart, afterMicStop, beforeMicStart } from "./audio-session.svelte.ts";
 import { getAudioContext } from "./audio.ts";
 import { playback } from "./playback.svelte.ts";
 
@@ -34,6 +35,7 @@ export class PitchListener {
     // Resume while still inside the user gesture; Safari won't allow it after the await below.
     const ctx = getAudioContext();
     void ctx.resume();
+    beforeMicStart();
 
     let stream: MediaStream;
     try {
@@ -44,13 +46,16 @@ export class PitchListener {
     } catch (e) {
       this.error = e instanceof Error ? e.message : String(e);
       this.status = "idle";
+      afterMicStop();
       return;
     }
     if (this.status !== "starting") {
       // stop() was called while waiting for permission.
       for (const track of stream.getTracks()) track.stop();
+      afterMicStop();
       return;
     }
+    afterMicStart();
 
     const analyser = new AnalyserNode(ctx, { fftSize: 2048 });
     this.#stream = stream;
@@ -84,11 +89,13 @@ export class PitchListener {
   stop(): void {
     cancelAnimationFrame(this.#frame);
     this.#source?.disconnect();
+    const wasOpen = this.#stream !== undefined;
     for (const track of this.#stream?.getTracks() ?? []) track.stop();
     this.#source = undefined;
     this.#stream = undefined;
     this.#smoother.reset();
     this.status = "idle";
     this.frequency = null;
+    if (wasOpen) afterMicStop();
   }
 }

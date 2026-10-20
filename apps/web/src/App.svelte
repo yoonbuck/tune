@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { audioSessionDebug } from "./lib/audio-session.svelte.ts";
   import IntervalPlayer from "./lib/IntervalPlayer.svelte";
   import PitchMatchGame from "./lib/PitchMatchGame.svelte";
   import PitchMonitor from "./lib/PitchMonitor.svelte";
@@ -27,6 +28,11 @@
     <PitchMonitor />
     <IntervalPlayer />
   {/if}
+
+  <!-- TEMPORARY: audio session experiment readout -->
+  <footer>
+    Audio session strategy: {audioSessionDebug.strategy} · type: {audioSessionDebug.type}
+  </footer>
 </main>
 
 <style>
@@ -57,6 +63,12 @@
     padding: 0.25rem;
     border: 1px solid var(--border);
     border-radius: 0.5rem;
+  }
+
+  footer {
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-align: center;
   }
 
   .tab {
