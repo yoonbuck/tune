@@ -31,8 +31,7 @@
 
   <!-- TEMPORARY: audio session experiment readout -->
   <footer>
-    Audio session strategy: {audioSessionDebug.strategy} · type: {audioSessionDebug.type} · state:
-    {audioSessionDebug.state}
+    Audio session strategy: {audioSessionDebug.strategy} · type: {audioSessionDebug.type}
   </footer>
 </main>
 
