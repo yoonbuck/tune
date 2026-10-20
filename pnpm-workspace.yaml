@@ -10,6 +10,7 @@ catalog:
   typescript: ^7.0.2
   vite: npm:@voidzero-dev/vite-plus-core@0.3.3
   vite-plus: 0.3.3
+  wrangler: ^4.151.1
 overrides:
   vite@*: "catalog:"
 peerDependencyRules:
@@ -17,3 +18,6 @@ peerDependencyRules:
     - vite
   allowedVersions:
     vite: "*"
+allowBuilds:
+  esbuild: false
+  workerd: false
