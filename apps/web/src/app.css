@@ -1,0 +1,64 @@
+:root {
+  --bg: #fff;
+  --surface: #f6f5f8;
+  --text: #1a1720;
+  --muted: #6b6375;
+  --border: #e5e4e7;
+  --accent: #7c3aed;
+  --in-tune: #16a34a;
+  --error: #dc2626;
+
+  font:
+    16px/1.5 system-ui,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+
+  @media (prefers-color-scheme: dark) {
+    --bg: #16141a;
+    --surface: #1f1c24;
+    --text: #f3f1f5;
+    --muted: #9d95a8;
+    --border: #2e2a35;
+    --accent: #a78bfa;
+    --in-tune: #4ade80;
+    --error: #f87171;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &.primary {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+.error {
+  color: var(--error);
+}

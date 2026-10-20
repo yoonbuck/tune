@@ -1,0 +1,21 @@
+{
+  "name": "@tune/games",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Framework-free ear-training game logic.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vp test"
+  },
+  "dependencies": {
+    "@tune/theory": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
