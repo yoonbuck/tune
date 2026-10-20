@@ -1,8 +1,13 @@
 # Static-assets-only Worker: serves the built SPA, no Worker script needed.
-# Deploy with `vp run web#deploy` from the repo root.
+# Deployed by Cloudflare Workers Builds on push (settings in the README);
+# `vp run web#deploy` deploys manually.
 name = "tune"
 compatibility_date = "2026-10-19"
 
 [assets]
 directory = "./dist"
 not_found_handling = "single-page-application"
+
+# Required for `wrangler preview` (Workers Builds' preview command). Empty is fine:
+# assets and compatibility settings above are shared with previews.
+[previews]
