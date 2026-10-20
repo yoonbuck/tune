@@ -24,3 +24,7 @@ vp run dev        # start the web app
 vp run -r test    # run tests
 vp run ready      # format, lint, type-check, test, and build everything
 ```
+
+## License
+
+[MIT](LICENSE)

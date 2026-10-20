@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Framework-free pitch detection over raw audio samples.",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"

@@ -2,6 +2,7 @@
   "name": "tune",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "ready": "vp check && vp run -r check && vp run -r test && vp run -r build",
